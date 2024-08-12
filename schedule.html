@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>CCA schedule</title>
+    <link rel='stylesheet' href='../static/style.css'>
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <ul class="navbar">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a class='active' href="{{ url_for('schedule') }}">Schedule</a></li>
+      <li><a href="{{ url_for('reflection') }}">Reflection</a></li>
+      <li><a href=" {{ url_for('plotter') }}">Plotter</a></li>
+    </ul>
+    <div id="mainwrapper">
+      <h2>July/Aug schedule</h2>
+      <img src="../static/July_Aug schedule.png" alt="July/Aug schedule">
+      <h2>June/July schedule</h2>
+      <img src="../static/June_July schedule.png" alt="June/July schedule">
+    </div>
+  </body>
+</html>
