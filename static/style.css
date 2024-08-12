@@ -1,0 +1,45 @@
+body {
+  font-family: 'Arial';
+  margin: 0;
+}
+
+#mainwrapper {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  padding: 0 20px 20px 20px;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.navbar li {
+  float: left;
+}
+
+ul.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.navbar li a:hover:not(.active) {
+  background-color: #111;
+}
+
+ul.navbar .active {
+  background-color: grey;
+}
+
+ul.announcements {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 20px;
+}
