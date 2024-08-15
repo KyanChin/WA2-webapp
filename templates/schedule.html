@@ -14,10 +14,33 @@
       <li><a href=" {{ url_for('plotter') }}">Plotter</a></li>
     </ul>
     <div id="mainwrapper">
-      <h2>July/Aug schedule</h2>
-      <img src="../static/July_Aug schedule.png" alt="July/Aug schedule">
-      <h2>June/July schedule</h2>
-      <img src="../static/June_July schedule.png" alt="June/July schedule">
+      <h1>Upload Image</h1>
+      <form action="/schedule" method="POST" enctype="multipart/form-data">
+          <input type="file" name="schedule" required>
+          <button type="submit">Upload</button>
+        <label for="month">Select Month Range:</label>
+        <select name="month" id="month" required>
+          <option value="Jan_Feb">January - February</option>
+          <option value="Feb_March">February - March</option>
+          <option value="March_April">March - April</option>
+          <option value="April_May">April - May</option>
+          <option value="May_June">May - June</option>
+          <option value="June_July">June - July</option>
+          <option value="July_Aug">July - August</option>
+          <option value="Aug_Sep">August - September</option>
+          <option value="Sep_Oct">September - October</option>
+          <option value="Oct_Nov">October - November</option>
+          <option value="Nov_Dec">November - December</option>
+          <option value="Dec_Jan">December - January</option>
+        </select>
+      </form>
+
+      {% if schedules %}
+        {% for schedule in schedules %}
+          <h2>{{ schedule[2:-4] }}</h2>
+          <img src="../static/{{ schedule }}" alt="{{ schedule[2:-4] }}">
+        {% endfor %}
+      {% endif %}
     </div>
   </body>
 </html>
