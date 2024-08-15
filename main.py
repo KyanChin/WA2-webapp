@@ -103,9 +103,35 @@ def home():
             
     return render_template('index.html', announcements=file_content('announcements'), debriefs=seperate_list_by_dates(file_content('debrief')), students=get_students(), show=False)
 
-@app.route('/schedule')
+@app.route('/schedule', methods=['GET', 'POST'])
 def schedule():
-    return render_template('schedule.html')
+    month_number = {'Jan_Feb': 1, 'Feb_March' : 2, 'March_April': 3, 'April_May': 4, 'May_June': 5, 'June_July': 6, 'July_Aug': 7, 'Aug_Sep': 8, 'Sep_Oct': 9, 'Oct_Nov': 10, 'Nov_Dec': 11, 'Dec_Jan': 12}
+    UPLOAD_FOLDER = 'static'
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    
+    if request.method == 'POST':
+        month = request.form.get('month')
+        file = request.files['schedule']
+        if file and month:
+            filename = f"{month_number[month]}_{month} Schedule.png"
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            #Delete outdated schedule pictures
+            files = os.listdir(app.config['UPLOAD_FOLDER'])
+            if len(files) > 3:
+                remove_schedule = None
+                for file in files:
+                    if file != 'style.css':
+                        if remove_schedule is None or int(file[0]) < int(remove_schedule[0]):
+                            remove_schedule = file                        
+                os.remove(f'static/{remove_schedule}')
+
+    files = os.listdir(app.config['UPLOAD_FOLDER'])
+    schedules = []
+    for file in files:
+        if file != 'style.css':
+            schedules.append(file)
+    return render_template('schedule.html', schedules=schedules)
 
 @app.route('/reflection', methods=['GET', 'POST'])
 def reflection():
@@ -130,7 +156,7 @@ def reflection():
 # Define the scope
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 # Add credentials to the account
-creds = ServiceAccountCredentials.from_json_keyfile_name("./computing-wa2-webapp-4986adbaa8ce.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("./computing-wa2-webapp-7bcf070dbbb1.json", scope)
 # Authorize the client sheet 
 client = gspread.authorize(creds)
 
