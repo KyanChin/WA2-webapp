@@ -20,9 +20,10 @@ This project will help shooting CCA have a more organised place for information 
   this will show them all previous debriefs posted. To post a debrief, users can write in the text box and press the
   'Add' button to post the debrief. 
 
-
 - Schedule Page
-  In this page, users can see the schedule of upcoming CCA sessions.
+  In this page, users can see the schedule of upcoming CCA sessions and update the schedules by submitting a picture of the
+  new schedule and uploading it. Only the lastest 2 of the schdules would be displayed e.g. February and March would be
+  displayed while January would not if all 3 schedules are uploaded.
 
 - Reflection Page
   In this page, users can choose their own reflection page by selecting their name and pressing the 'Select' button.
