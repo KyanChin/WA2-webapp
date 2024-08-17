@@ -3,6 +3,7 @@ import os
 import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import json
 
 
 app = Flask(__name__)
@@ -153,11 +154,15 @@ def reflection():
         return render_template('reflection.html', select_student=select_student, students=get_students(), student_content=file_content(select_student))
     return render_template('reflection.html', students=get_students())
 
+# Load the JSON credentials from the environment variable
+creds_json = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+# Parse the JSON string
+creds_dict = json.loads(creds_json)
 # Define the scope
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-# Add credentials to the account
-creds = ServiceAccountCredentials.from_json_keyfile_name("./computing-wa2-webapp-7bcf070dbbb1.json", scope)
-# Authorize the client sheet 
+# Create the credentials object from the dictionary
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+# Authorize the client
 client = gspread.authorize(creds)
 
 @app.route('/plotter', methods=['GET', 'POST'])
