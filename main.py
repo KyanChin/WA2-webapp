@@ -45,6 +45,7 @@ def write_in_first_line_without_date(filename, contents):
 def seperate_list_by_dates(list_content):
     refined_list = []
     output_list = []
+
     for i in list_content:
         refined_list.append(i.rstrip(': \n'))
     for i in refined_list:
@@ -52,9 +53,10 @@ def seperate_list_by_dates(list_content):
             datetime.datetime.strptime(i, '%Y-%m-%d')
             output_list.append(i + ': ')
         except ValueError:
-            output_list[-1] = output_list[-1] + ' ' + i
-            
+            if output_list:
+                output_list[-1] = output_list[-1] + ' ' + i
     return output_list 
+
 
 def sheet_edit(sheet_name, data, max_input):
     converter = {1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E', 6: 'F', 7: 'G', 8: 'H', 9: 'I', 10: 'J'}
