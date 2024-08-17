@@ -13,12 +13,16 @@
       <li><a href="{{ url_for('reflection') }}">Reflection</a></li>
       <li><a href=" {{ url_for('plotter') }}">Plotter</a></li>
     </ul>
+    
     <div id="mainwrapper">
+      <!-- Content -->
       <h1>Upload Image</h1>
       <form action="/schedule" method="POST" enctype="multipart/form-data">
-          <input type="file" name="schedule" required>
-          <button type="submit">Upload</button>
+        <!-- Input image -->
+        <input type="file" name="schedule" required>
+        <button type="submit">Upload</button>
         <label for="month">Select Month Range:</label>
+        <!-- Input month -->
         <select name="month" id="month" required>
           <option value="Jan_Feb">January - February</option>
           <option value="Feb_March">February - March</option>
@@ -38,8 +42,11 @@
       <hr>
       
       {% if schedules %}
+        <!-- Display when their is existing images of schedules -->
         {% for schedule in schedules %}
+          <!-- String slicing for the month name -->
           <h2>{{ schedule[2:-4] }}</h2>
+          <!-- Display the corressponding month -->
           <img src="../static/{{ schedule }}" alt="{{ schedule[2:-4] }}">
         {% endfor %}
       {% endif %}
