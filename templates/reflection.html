@@ -42,8 +42,12 @@
         </select>
         <input type='submit' value='Select'>
       </form>
+      
+      <hr>
+      
       <!-- show which student is selected -->
       {% if select_student %}
+        <section>
         <p>Student selected: {{ select_student }}</p>
   
         <!-- Form for writing reflection -->
@@ -62,6 +66,7 @@
         {% else %}
           <p>{{ select_student }} has not wrote any reflections before.</p>
         {% endif %}
+        </section>
       {% endif %}
     </div>
   </body>
