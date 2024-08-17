@@ -13,10 +13,12 @@
     <li><a href="{{ url_for('reflection') }}">Reflection</a></li>
     <li><a href=" {{ url_for('plotter') }}">Plotter</a></li>
   </ul>
+  
   <div id="mainwrapper">
     <!-- Content -->
     <h1>Shooting CCA</h1>
     <hr>
+    <section>
     <h2>Announcements</h2>
     
     {% if announcements %}
@@ -34,9 +36,11 @@
     <form action='/announcement'>
       <input type='submit' value='add/delete announcements'>
     </form>
-  
-    <br><hr>
+    </section>
     
+    <br><hr>
+
+    <section>
     <h2>Debriefs</h2>
     <h3>Latest:</h3>
     {% if debriefs %}
@@ -67,6 +71,7 @@
       <br>
       <input type='submit' value='Add'>
     </form>
+    </section>
   </div>
   
 </body>
