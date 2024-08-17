@@ -15,10 +15,13 @@
     </ul>
     
     <div id="mainwrapper">
+    <!-- Content -->
     <h1>Add or Delete announcement</h1>
       {% if announcements %}
+        <!-- Only display the form if there are announcements to delete -->
         <form action='/' method='POST'>
           {% for announcement in announcements %}
+            <!-- Checkboxes to tick announcements to delete -->
             <input type="checkbox" name='deleted_announcement' id='deleted_announcement' value='{{ announcement }}'>
             <label for='checkbox'>{{ announcement }}</label>
             <br>
@@ -27,11 +30,13 @@
           <input type='submit' value='Delete'>
         </form>
       {% else %}
+        <!-- Display this if no existing announcements -->
         <p>No announcements to delete.</p>
       {% endif %}
   
       <hr>
-  
+
+      <!-- Add announcements -->
       <form action='/' method='POST'>
         <label for='announcement'>Add announcement:</label>
         <br>
