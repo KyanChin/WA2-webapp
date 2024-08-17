@@ -15,55 +15,66 @@
     </ul>
 
     <div id="mainwrapper">
+    <!-- Content -->
       <h1>Performance/Series Plotter</h1>
       {% if choice is none %}
-          <p>Please select performance or series plotter:</p>
-          <form method="POST">
-              <input type="radio" id="performance" name="selection" value="performance">
-              <label for="performance">Performance</label><br>
+        <!-- If no choices are chosen yet, give users 3 choices -->
+        <p>Please select performance or series plotter:</p>
+        <form method="POST">
+            <input type="radio" id="performance" name="selection" value="performance">
+            <label for="performance">Performance</label><br>
 
-              <input type="radio" id="40series" name="selection" value="40series">
-              <label for="40series">Series (40 shots)</label><br>
+            <input type="radio" id="40series" name="selection" value="40series">
+            <label for="40series">Series (40 shots)</label><br>
 
-              <input type="radio" id="60series" name="selection" value="60series">
-              <label for="60series">Series (60 shots)</label><br><br>
+            <input type="radio" id="60series" name="selection" value="60series">
+            <label for="60series">Series (60 shots)</label><br><br>
 
-              <input type="submit" value="Select"><br><br>
-          </form>
+            <input type="submit" value="Select"><br><br>
+        </form>
       {% elif choice == 'performance' %}
-          <h3><u>Performance Selected</u></h3>
-          <form method='POST'>
+        <!-- If the user chose performance -->
+        <h3><u>Performance Selected</u></h3>
+        <form method='POST'>
+            <!-- Send back the url of the exact sheet page needed to display -->
             <input type="hidden" id="url" name="url" value='https://docs.google.com/spreadsheets/d/1VPnIJMh4kys1WvVBG00mU04XwYwbBwJOyRZEf-hce4g/preview?gid=0#gid=1137949880'>
+            <!-- Textarea for scores input -->
             <label for='scores'>Enter scores of each competition, least recent to most recent (up to 10) (separated by commas):</label><br>
             <textarea name='scores' id='scores' rows='4' cols='50' required></textarea>
             <input type='submit' value='Submit'><br><br>
-          </form>
+        </form>
       {% elif choice == '40series' %}
-          <h3><u>40 Series Selected</u></h3>
-          <form method="POST">
-              <input type="hidden" id="url" name="url" value='https://docs.google.com/spreadsheets/d/1VPnIJMh4kys1WvVBG00mU04XwYwbBwJOyRZEf-hce4g/preview?gid=0#gid=727303644'>
-              <label for="score1">Enter scores of each series:</label><br>
-              <input type="number" name="40scores" id="score1" min="0" max="110" required><br>
-              <input type="number" name="40scores" id="score2" min="0" max="110" required><br>
-              <input type="number" name="40scores" id="score3" min="0" max="110" required><br>
-              <input type="number" name="40scores" id="score4" min="0" max="110" required><br>
-              <input type="submit" value="Submit"><br><br>
-          </form>
+        <h3><u>40 Series Selected</u></h3>
+        <!-- If users chose 40series -->
+        <form method="POST">
+            <!-- Send back the url of the exact sheet page needed to display -->
+            <input type="hidden" id="url" name="url" value='https://docs.google.com/spreadsheets/d/1VPnIJMh4kys1WvVBG00mU04XwYwbBwJOyRZEf-hce4g/preview?gid=0#gid=727303644'>
+            <!-- inputs for scores input -->
+            <label for="score1">Enter scores of each series:</label><br>
+            <input type="number" name="40scores" id="score1" min="0" max="110" required><br>
+            <input type="number" name="40scores" id="score2" min="0" max="110" required><br>
+            <input type="number" name="40scores" id="score3" min="0" max="110" required><br>
+            <input type="number" name="40scores" id="score4" min="0" max="110" required><br>
+            <input type="submit" value="Submit"><br><br>
+        </form>
       {% elif choice == '60series' %}
-          <h3><u>60 Series Selected</u></h3>
-          <form method="POST">
-              <input type="hidden" id="url" name="url" value='https://docs.google.com/spreadsheets/d/1VPnIJMh4kys1WvVBG00mU04XwYwbBwJOyRZEf-hce4g/preview?gid=0#gid=0'>
-              <label for="score1">Enter scores of each series:</label><br>
-              <input type="number" name="60scores" id="score1" min="0" max="110" required><br>
-              <input type="number" name="60scores" id="score2" min="0" max="110" required><br>
-              <input type="number" name="60scores" id="score3" min="0" max="110" required><br>
-              <input type="number" name="60scores" id="score4" min="0" max="110" required><br>
-              <input type="number" name="60scores" id="score5" min="0" max="110" required><br>
-              <input type="number" name="60scores" id="score6" min="0" max="110" required><br>
-              <input type="submit" value="Submit"><br><br>
-          </form>
+        <h3><u>60 Series Selected</u></h3>
+        <!-- If users chose 60series -->
+        <form method="POST">
+            <!-- Send back the url of the exact sheet page needed to display -->
+            <input type="hidden" id="url" name="url" value='https://docs.google.com/spreadsheets/d/1VPnIJMh4kys1WvVBG00mU04XwYwbBwJOyRZEf-hce4g/preview?gid=0#gid=0'>
+            <label for="score1">Enter scores of each series:</label><br>
+            <input type="number" name="60scores" id="score1" min="0" max="110" required><br>
+            <input type="number" name="60scores" id="score2" min="0" max="110" required><br>
+            <input type="number" name="60scores" id="score3" min="0" max="110" required><br>
+            <input type="number" name="60scores" id="score4" min="0" max="110" required><br>
+            <input type="number" name="60scores" id="score5" min="0" max="110" required><br>
+            <input type="number" name="60scores" id="score6" min="0" max="110" required><br>
+            <input type="submit" value="Submit"><br><br>
+        </form>
       {% endif %}
 
+      <!-- If url was sent from flask, display it -->
       {% if sheet_url %}
           <iframe id="sheetIframe" src="{{ sheet_url }}" width="60%" height="500px"></iframe>
       {% endif %}
