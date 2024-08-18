@@ -1,5 +1,5 @@
 # WA2-webapp
-H2 computing WA2 Webapp 2023
+H2 computing WA2 Webapp 2023 --> Web portal for Shooting CCA
 
 # Inspiration
 This project is inspired by my shooting CCA coach who uses different websites and apps to take note on our progress and reflections such as excel and whatsapp. And I wanted to make a webapp that has everything in a single place.
