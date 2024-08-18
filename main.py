@@ -57,6 +57,7 @@ def seperate_list_by_dates(list_content):
     for i in refined_list:
         try:
             datetime.datetime.strptime(i, '%Y-%m-%d')
+            output_list.append(i + ': ')
         except ValueError:
             if output_list:
                 output_list[-1] = output_list[-1] + ' ' + i
