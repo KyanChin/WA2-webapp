@@ -17,7 +17,7 @@ def get_students():
             students[i] = students[i][:-1]   
     return students
 
-#read content of files
+#Read content of files
 def file_content(filename):
     with open(f'{filename}.txt', 'r') as file:
         content = file.readlines()
@@ -46,6 +46,13 @@ def write_in_first_line_without_date(filename, contents):
     with open(f'{filename}.txt', 'w') as file:
         file.write(f'{contents}\n')
         file.writelines(content)
+
+#Format the txt files to be blank from the start (Github requires a '\n' at first)
+def blank_file(filename):
+    if file_content(filename) == ['\n']:
+        #file closes after with block 
+        with open(f'{filename}.txt', 'w') as file:
+            file.write('')
 
 #Seperate the list by dates
 def seperate_list_by_dates(list_content):
@@ -81,6 +88,10 @@ def sheet_edit(sheet_name, data, max_input):
 #Home Page
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    #To avoid having a blank announcement or debrief
+    blank_file('announcements')
+    blank_file('debrief')
+    
     if request.method == 'POST':
         #Get the ticked (going to be deleted) announcements from the form 'add/delete announcements'
         checkbox_values = request.form.getlist('deleted_announcement')
